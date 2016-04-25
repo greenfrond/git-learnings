@@ -1,2 +1,1 @@
-this is for learning git from the free ProGit book
-Refer to the repository wiki page
+Refer to the wiki page for summary working notes on Git, AngularJS
