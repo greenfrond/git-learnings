@@ -1,0 +1,1 @@
+This directory contains the files modified after creating a blank Angular project in WebStorm
