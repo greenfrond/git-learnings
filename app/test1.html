@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html ng-app="store">
     <head>
-        <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <h1>test1.html</h1>
     </head>
-    <body>
+    <body ng-controller="StoreController as store">
+        <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="test1.js"></script>
-        <p>{{"hello" + " you"}}</p>
+
+        <ul class="list-group" ng-init="tab = 2">
+            <li class="list-group-item" ng-repeat="product in store.products" ng-hide="product.soldOut">
+                <h3>
+                    {{product.name}}
+                    <em class="pull-left">{{product.price | currency}}</em>
+                </h3>
+                <button ng-show="product.canPurchase">Add to Cart</button>
+                <div ng-repeat="image in product.images" >
+                    <img ng-src="images/{{image}}" />
+                </div>
+
+                <section>
+                    <ul class="nav nav-pills" >
+                        <li ng-class="{ active: tab === 1}">
+                            <a href ng-click="tab=1" >Description</a>
+                        </li>
+                        <li ng-class="{ active: tab === 2}">
+                            <a href ng-click="tab=2" >Specification</a>
+                        </li>
+                        <li ng-class="{ active: tab === 3}">
+                            <a href ng-click="tab=3">Reviews</a>
+                        </li>
+                    </ul>
+                    {{tab}}
+                    <div class="panel" ng-show="tab === 1" >
+                        <h4>Description</h4>
+                        <p>{{product.description}}</p>
+                    </div>
+                    <div class="panel" ng-show="tab === 2" >
+                        <h4>Specification</h4>
+                        <blockquote>None yet</blockquote>
+                    </div>
+                    <div class="panel" ng-show="tab === 3" >
+                        <h4>Reviews</h4>
+                        <blockquote>None yet</blockquote>
+                    </div>
+                </section>
+            </li>
+        </ul>
     </body>
 </html>
