@@ -10,7 +10,7 @@
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="test1.js"></script>
 
-        <ul class="list-group" ng-init="tab = 2">
+        <ul class="list-group" >
             <li class="list-group-item" ng-repeat="product in store.products" ng-hide="product.soldOut">
                 <h3>
                     {{product.name}}
@@ -21,28 +21,28 @@
                     <img ng-src="images/{{image}}" />
                 </div>
 
-                <section>
+                <section ng-controller="PanelController as panel">
                     <ul class="nav nav-pills" >
-                        <li ng-class="{ active: tab === 1}">
-                            <a href ng-click="tab=1" >Description</a>
+                        <li ng-class="{ active: panel.isSelected(1)}">
+                            <a href ng-click="panel.selectTab(1)" >Description</a>
                         </li>
-                        <li ng-class="{ active: tab === 2}">
-                            <a href ng-click="tab=2" >Specification</a>
+                        <li ng-class="{ active: panel.isSelected(2)}">
+                            <a href ng-click="panel.selectTab(2)" >Specification</a>
                         </li>
-                        <li ng-class="{ active: tab === 3}">
-                            <a href ng-click="tab=3">Reviews</a>
+                        <li ng-class="{ active: panel.isSelected(3)}">
+                            <a href ng-click="panel.selectTab(3)" >Reviews</a>
                         </li>
                     </ul>
                     {{tab}}
-                    <div class="panel" ng-show="tab === 1" >
+                    <div class="panel" ng-show=" panel.isSelected(1)" >
                         <h4>Description</h4>
                         <p>{{product.description}}</p>
                     </div>
-                    <div class="panel" ng-show="tab === 2" >
+                    <div class="panel" ng-show=" panel.isSelected(2)" >
                         <h4>Specification</h4>
                         <blockquote>None yet</blockquote>
                     </div>
-                    <div class="panel" ng-show="tab === 3" >
+                    <div class="panel" ng-show=" panel.isSelected(3)" >
                         <h4>Reviews</h4>
                         <blockquote>None yet</blockquote>
                     </div>
