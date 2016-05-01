@@ -13,6 +13,17 @@
             soldOut: false,
             images: [
                 "test1.png"
+            ],
+            reviews: [{
+                    stars: 5,
+                    body: "Review 1",
+                    author: "Author 1"
+                },
+                {
+                    stars: 4,
+                    body: "Review 1b",
+                    author: "Author 1b"
+                }
             ]
         },
         {
@@ -23,6 +34,12 @@
             soldOut: false,
             images: [
                 "test2.png"
+            ],
+            reviews: [{
+                stars: 3,
+                body: "Review 2",
+                author: "Author 2"
+            }
             ]
         },
         {
@@ -34,6 +51,12 @@
             images: [
                 "test1.png",
                 "test2.png"
+            ],
+            reviews: [{
+                stars: 1,
+                body: "Review 3",
+                author: "Author 3"
+            }
             ]
         }
     ];
@@ -51,5 +74,11 @@
             return (checkTab === this.tab);
         };
     })
-
+    app.controller("ReviewController", function(){
+        this.review = {};
+        this.addReview = function(product) {
+            product.reviews.push(this.review);
+            this.review = {};
+        };
+    })
 })();
